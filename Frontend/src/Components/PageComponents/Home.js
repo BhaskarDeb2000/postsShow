@@ -87,7 +87,10 @@ function Home() {
             {error}
           </Typography>
         ) : loading ? (
-          <CircularProgress />
+          <CircularProgress
+            size="100px"
+            style={{ display: "flex", justifySelf: "center" }}
+          />
         ) : (
           <Container>
             {posts.map((post) => (

@@ -1,84 +1,69 @@
-# Home Component with Delete Functionality
+# Show Card Hobby Project :tada:
 
-This project is a React component that fetches posts from an API, displays them in cards, and allows users to delete individual posts. The `Home` component uses Material-UI for UI styling and Axios for making HTTP requests.
+This is a full-stack hobby project that demonstrates the use of React for the frontend and Express.js for the backend. The project enables users to view and delete articles, with a clean, responsive user interface built using Material-UI.
 
----
-
-## Features
-1. **Fetch and Display Posts**: Fetches a list of posts from a backend API and displays them using Material-UI cards.
-2. **Delete Functionality**: Allows the user to delete individual posts. The deleted post is removed both from the backend and the UI.
-3. **Error Handling**: Displays error messages if the API request fails.
-4. **Loading Indicator**: Shows a loading spinner while fetching data.
+[Live Site](https://posts-show.vercel.app/)
 
 ---
 
+## Features 
 
-## Setup Instructions
-
-### Prerequisites
-- **Node.js** installed on your system.
-- A running backend server that serves the posts API.
-
-### Backend API Requirements
-- **GET /Home**: Returns an object with `posts` as an array of post objects. Each post must have an `id`, `title`, and `body`.
-- **DELETE /Home/:id**: Deletes a post with the specified `id`.
-
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the React development server:
-   ```bash
-   npm start
-   ```
+- **View Articles**: Users can browse articles displayed as cards.
+- **Delete Articles**: Articles can be deleted through a modal confirmation.
+- **Responsive Design**: The application is styled using Material-UI for responsiveness and a clean look.
+- **API Integration**: The app fetches and manages data from a backend server hosted on Vercel.
 
 ---
 
-## Usage
-1. **Start the Backend**:
-   Ensure your backend is running at `http://localhost:5001` and has the required API endpoints.
+## Project Structure
 
-2. **Fetch Posts**:
-   - The component fetches posts from `http://localhost:5001/Home` on load.
-   - Displays each post in a Material-UI card.
+### Frontend
 
-3. **Delete a Post**:
-   - Click the **Delete** button on a card to remove the corresponding post.
-   - The post is deleted both from the backend and the UI.
+The frontend is built with React, using Material-UI for styling and Axios for HTTP requests.
+
+#### Key Components
+
+1. **`App.js`**:
+   - Entry point of the React application.
+   - Configures the routes using `react-router-dom`.
+
+2. **`Home.js`**:
+   - Main page displaying articles fetched from the backend.
+   - Contains functionality to:
+     - Display articles in cards.
+     - Show modals for viewing details and confirming deletions.
+
+3. **Element Components**:
+   - **`ViewDetailsModal.js`**: Displays the detailed view of an article in a modal.
+   - **`DeleteModal.js`**: Confirms deletion of an article.
 
 ---
 
-## Code Overview
+### Backend
 
-### Home Component
-- **State Variables**:
-  - `posts`: Stores the list of posts.
-  - `error`: Stores error messages.
-  - `loading`: Indicates whether the data is being loaded.
+The backend is built with Express.js and hosted on Vercel.
 
-- **Key Functions**:
-  1. **`fetchPosts`**:
-     Fetches posts from the backend API and populates the `posts` state.
-  2. **`deleteCard`**:
-     Deletes a specific post by its `id` and updates the UI.
+#### Key Files
 
-- **Render Logic**:
-  - Shows a loading spinner if `loading` is `true`.
-  - Displays an error message if `error` is set.
-  - Displays posts in cards if `loading` is `false` and there are no errors.
+1. **`index.js`**:
+   - Configures routes for fetching, deleting, and describing articles.
+   - Sets up Express with middleware for JSON parsing and CORS.
 
-### DeleteCard Component
-- A simple reusable button component for deleting posts. It receives a `deleteCard` function as a prop.
+2. **Routes**:
+   - **`HomeRoute.js`**: Handles requests for fetching all articles.
+   - **`DescriptionRoute.js`**: Handles requests for fetching article details.
+   - **`DeleteRoute.js`**: Handles deletion requests.
+
+3. **`vercel.json`**:
+   - Configures Vercel for deploying the backend API.
 
 ---
 
 ## Technologies Used
-- **React**: Frontend framework.
-- **Material-UI**: UI component library.
-- **Axios**: For making HTTP requests.
+
+- **Frontend**: React, Material-UI, Axios
+- **Backend**: Express.js, Vercel
+- **Routing**: React Router
+- **Deployment**: Vercel
+
+---
