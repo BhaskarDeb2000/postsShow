@@ -4,16 +4,19 @@ import axios from "axios";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  const id = req.query.id;
+
   try {
     const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/`
+      `https://jsonplaceholder.typicode.com/posts/${id}`
     );
     res.json({
-      posts: response.data,
+      title: response.data.title,
+      body: response.data.body,
     });
   } catch (error) {
     console.error(error);
-    res.error(error.message);
+    res.send(error.message);
   }
 });
 

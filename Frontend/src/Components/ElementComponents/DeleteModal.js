@@ -1,46 +1,42 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
+import { Modal, Box, Typography, Button, Stack } from "@mui/material";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-export default function BasicModal({ open, onClose, deleteCard }) {
+function DeleteModal({ open, post, onClose, onDelete }) {
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Confirm Deletion
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Are you sure you want to delete this card? This action cannot be
-          undone.
-        </Typography>
-        <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
-          <Button variant="contained" color="error" onClick={deleteCard}>
-            Delete
-          </Button>
-          <Button variant="outlined" onClick={onClose}>
-            Cancel
-          </Button>
-        </Box>
+    <Modal open={open} onClose={onClose}>
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "background.paper",
+          boxShadow: 15,
+          padding: 4,
+          borderRadius: 2,
+        }}
+      >
+        {post && (
+          <>
+            <Typography variant="h6" sx={{ marginBottom: 2 }}>
+              Are you sure you want to delete this post?
+            </Typography>
+            <Typography variant="body1" sx={{ marginBottom: 3 }}>
+              {post.title}
+            </Typography>
+            <Stack direction="row" spacing={2}>
+              <Button variant="contained" color="error" onClick={onDelete}>
+                Delete
+              </Button>
+              <Button variant="outlined" onClick={onClose}>
+                Cancel
+              </Button>
+            </Stack>
+          </>
+        )}
       </Box>
     </Modal>
   );
 }
+
+export default DeleteModal;
