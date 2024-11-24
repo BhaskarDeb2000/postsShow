@@ -23,7 +23,9 @@ function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/articles");
+        const response = await axios.get(
+          "https://postsshow-backend.vercel.app/articles"
+        );
         setPosts(response.data.posts);
       } catch (error) {
         setError(error.message);
@@ -58,7 +60,7 @@ function Home() {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `http://localhost:5001/articles/delete?id=${selectedPost.id}`
+        `https://postsshow-backend.vercel.app/articles/delete?id=${selectedPost.id}`
       );
       setPosts((prevPosts) =>
         prevPosts.filter((post) => post.id !== selectedPost.id)
