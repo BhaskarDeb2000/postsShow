@@ -1,29 +1,34 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Typography, Button, Link, Box } from "@mui/material";
+import { Box, Container, Typography, Button, Link } from "@mui/material";
 
 function ViewDetailsPage() {
   const location = useLocation();
   const { post } = location.state;
 
   return (
-    <Container
-      maxWidth="md"
+    <Box
       sx={{
         backgroundColor: "#332244",
         minHeight: "100vh",
-        padding: "40px",
-        borderRadius: "8px",
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        color: "white",
       }}
     >
-      <Box sx={{ width: "100%", textAlign: "center" }}>
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          maxWidth: "sm",
+          textAlign: "center",
+        }}
+      >
         {post ? (
-          <Box sx={{ marginTop: "20px" }}>
+          <div>
             <Typography variant="h4" sx={{ fontWeight: "bold" }}>
               {post.title}
             </Typography>
@@ -38,7 +43,7 @@ function ViewDetailsPage() {
             >
               {post.body}
             </Typography>
-          </Box>
+          </div>
         ) : (
           <Typography
             variant="body1"
@@ -76,8 +81,8 @@ function ViewDetailsPage() {
             Go Back
           </Link>
         </Button>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 }
 
