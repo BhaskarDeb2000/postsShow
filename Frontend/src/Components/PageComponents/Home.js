@@ -121,6 +121,7 @@ function Home() {
                     >
                       View Details
                     </Button>
+
                     <Button
                       variant="outlined"
                       color="error"
