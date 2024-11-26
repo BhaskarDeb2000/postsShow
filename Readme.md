@@ -4,6 +4,13 @@
 
 ---
 
+## 🌍 Deployment
+
+The project is deployed on **Vercel** and is live here:  
+[**Show Cards App**](https://posts-show.vercel.app/) 🚀
+
+---
+
 ## ✨ Features
 
 - 📝 **Post Listing**: View all posts in a neat and organized grid layout.
@@ -55,35 +62,6 @@
 - 🖥️ Node.js (v14+)
 - 📦 npm or yarn (for package management)
 
-### Installation Steps
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/show-cards.git
-   cd show-cards
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the backend server:
-   ```bash
-   npm run server
-   ```
-   Backend will run at: `http://localhost:5001`.
-
-4. Start the frontend:
-   ```bash
-   npm start
-   ```
-   Frontend will run at: `http://localhost:3000`.
-
-5. Open your browser and visit: `http://localhost:3000`. 🎉
-
----
-
 ## ⚙️ How It Works
 
 1. **Homepage**:  
@@ -113,11 +91,6 @@
   Deletes a post by its ID.
 
 ---
-
-## 🌍 Deployment
-
-The project is deployed on **Vercel** and is live here:  
-[**Show Cards App**](https://posts-show.vercel.app/) 🚀
 
 
 ## 🙏 Acknowledgments
