@@ -6,7 +6,7 @@ This is a full-stack hobby project that demonstrates the use of React for the fr
 
 ---
 
-## Features 
+## Features
 
 - **View Articles**: Users can browse articles displayed as cards.
 - **Delete Articles**: Articles can be deleted through a modal confirmation.
