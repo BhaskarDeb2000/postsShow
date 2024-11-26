@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Container,
@@ -9,7 +10,6 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
-import ViewDetailsModal from "../ElementComponents/ViewDetalisModal";
 import DeleteModal from "../ElementComponents/DeleteModal";
 
 function Home() {
@@ -17,8 +17,9 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [viewModalOpen, setViewModalOpen] = useState(false);
+
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -36,16 +37,6 @@ function Home() {
 
     fetchPosts();
   }, []);
-
-  const openViewModal = (post) => {
-    setSelectedPost(post);
-    setViewModalOpen(true);
-  };
-
-  const closeViewModal = () => {
-    setViewModalOpen(false);
-    setSelectedPost(null);
-  };
 
   const openDeleteModal = (post) => {
     setSelectedPost(post);
@@ -71,6 +62,10 @@ function Home() {
     }
   };
 
+  const handleViewDetails = (post) => {
+    navigate(`/details`, { state: { post } });
+  };
+
   return (
     <div
       style={{
@@ -79,7 +74,7 @@ function Home() {
       }}
     >
       <Typography variant="h3" color="#eeeee4" align="center" paddingTop="50px">
-        Welcome to the show Card Hobby Project
+        Welcome to the Show Card Hobby Project
       </Typography>
       <Container style={{ padding: "50px" }}>
         {error ? (
@@ -122,7 +117,7 @@ function Home() {
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => openViewModal(post)}
+                      onClick={() => handleViewDetails(post)}
                     >
                       View Details
                     </Button>
@@ -139,12 +134,6 @@ function Home() {
             ))}
           </Container>
         )}
-
-        <ViewDetailsModal
-          open={viewModalOpen}
-          post={selectedPost}
-          onClose={closeViewModal}
-        />
 
         <DeleteModal
           open={deleteModalOpen}
