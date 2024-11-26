@@ -59,7 +59,7 @@ The project is deployed on **Vercel** and is live here:
 
 ### Prerequisites
 
-- 🖥️ Node.js (v14+)
+- 🖥️ Node.js (v20+)
 - 📦 npm or yarn (for package management)
 
 ## ⚙️ How It Works
