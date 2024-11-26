@@ -8,34 +8,70 @@ function ViewDetailsPage() {
 
   return (
     <Container
+      maxWidth="md"
       sx={{
-        backgroundColor: "#664a67",
+        backgroundColor: "#332244",
         minHeight: "100vh",
-        padding: "20px",
+        padding: "40px",
+        borderRadius: "8px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "white",
       }}
     >
-      <Box>
+      <Box sx={{ width: "100%", textAlign: "center" }}>
         {post ? (
-          <Container sx={{ marginTop: "30px", color: "white" }}>
-            <Typography variant="h4">{post.title}</Typography>
-            <Typography variant="body1" sx={{ marginTop: "20px" }}>
+          <Box sx={{ marginTop: "20px" }}>
+            <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+              {post.title}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                marginTop: "20px",
+                fontSize: "1.2rem",
+                lineHeight: "1.8",
+                textAlign: "justify",
+              }}
+            >
               {post.body}
             </Typography>
-          </Container>
+          </Box>
         ) : (
-          <Typography variant="body1">No post details available.</Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              marginTop: "20px",
+              fontSize: "1.2rem",
+              fontStyle: "italic",
+              color: "#ddd",
+            }}
+          >
+            No post details available.
+          </Typography>
         )}
         <Button
           variant="contained"
-          style={{
+          sx={{
             marginTop: "30px",
-            marginLeft: "20px",
-            display: "flex",
+            padding: "10px 20px",
+            backgroundColor: "#ff7043",
+            "&:hover": {
+              backgroundColor: "#e64a19",
+            },
+            textTransform: "none",
           }}
         >
           <Link
             href="https://posts-show.vercel.app/"
-            style={{ color: "white" }}
+            underline="none"
+            sx={{
+              color: "white",
+              fontSize: "1rem",
+              fontWeight: "bold",
+            }}
           >
             Go Back
           </Link>

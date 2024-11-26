@@ -9,6 +9,7 @@ import {
   CircularProgress,
   CardActions,
   Button,
+  Box,
 } from "@mui/material";
 import DeleteModal from "../ElementComponents/DeleteModal";
 
@@ -17,7 +18,6 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedPost, setSelectedPost] = useState(null);
-
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -67,33 +67,59 @@ function Home() {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#664a67",
+    <Box
+      sx={{
+        backgroundColor: "#332244",
         minHeight: "100vh",
+        color: "white",
+        paddingBottom: "50px",
       }}
     >
-      <Typography variant="h3" color="#eeeee4" align="center" paddingTop="50px">
+      <Typography
+        variant="h3"
+        align="center"
+        sx={{
+          paddingTop: "40px",
+          paddingBottom: "20px",
+          fontWeight: "bold",
+          color: "#ffccbc",
+        }}
+      >
         Welcome to the Show Card Hobby Project
       </Typography>
-      <Container style={{ padding: "50px" }}>
+      <Container sx={{ padding: "20px" }}>
         {error ? (
-          <Typography color="error" variant="body1">
+          <Typography color="error" variant="body1" align="center">
             {error}
           </Typography>
         ) : loading ? (
-          <CircularProgress
-            size="100px"
-            style={{ display: "flex", justifySelf: "center" }}
-          />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "50vh",
+            }}
+          >
+            <CircularProgress size={80} sx={{ color: "#ffccbc" }} />
+          </Box>
         ) : (
-          <Container>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "20px",
+              marginTop: "30px",
+            }}
+          >
             {posts.map((post) => (
               <Card
                 key={post.id}
                 sx={{
-                  minWidth: 275,
-                  margin: "20px",
+                  backgroundColor: "#443355",
+                  color: "white",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+                  borderRadius: "10px",
                   display: "flex",
                   flexDirection: "column",
                 }}
@@ -102,21 +128,30 @@ function Home() {
                   <Typography
                     variant="h5"
                     component="div"
-                    sx={{ marginBottom: "20px" }}
+                    sx={{
+                      marginBottom: "15px",
+                      fontWeight: "bold",
+                      color: "#ffccbc",
+                    }}
                   >
                     {post.title}
                   </Typography>
                   <Typography
                     variant="body2"
-                    textAlign="left"
-                    sx={{ marginBottom: "20px" }}
+                    textAlign="justify"
+                    sx={{ marginBottom: "20px", lineHeight: "1.6" }}
                   >
                     {post.body}
                   </Typography>
-                  <CardActions sx={{ padding: 0 }}>
+                  <CardActions sx={{ justifyContent: "space-between" }}>
                     <Button
                       variant="contained"
-                      color="primary"
+                      sx={{
+                        backgroundColor: "#ff7043",
+                        color: "white",
+                        textTransform: "none",
+                        "&:hover": { backgroundColor: "#e64a19" },
+                      }}
                       onClick={() => handleViewDetails(post)}
                     >
                       View Details
@@ -124,7 +159,15 @@ function Home() {
 
                     <Button
                       variant="outlined"
-                      color="error"
+                      sx={{
+                        borderColor: "#ffccbc",
+                        color: "#ffccbc",
+                        textTransform: "none",
+                        "&:hover": {
+                          backgroundColor: "#ffccbc",
+                          color: "#332244",
+                        },
+                      }}
                       onClick={() => openDeleteModal(post)}
                     >
                       Delete
@@ -133,17 +176,17 @@ function Home() {
                 </CardContent>
               </Card>
             ))}
-          </Container>
+          </Box>
         )}
-
-        <DeleteModal
-          open={deleteModalOpen}
-          post={selectedPost}
-          onClose={closeDeleteModal}
-          onDelete={handleDelete}
-        />
       </Container>
-    </div>
+
+      <DeleteModal
+        open={deleteModalOpen}
+        post={selectedPost}
+        onClose={closeDeleteModal}
+        onDelete={handleDelete}
+      />
+    </Box>
   );
 }
 
